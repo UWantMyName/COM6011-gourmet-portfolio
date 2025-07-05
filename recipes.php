@@ -57,7 +57,7 @@ $result = $stmt->get_result();
   <h1 data-aos="fade-right">Our Signature Recipes</h1>
 
   <!-- ─── Search, Filter & Sort Controls ─── -->
-  <form method="get" action="recipes.php" data-aos="fade-up" style="display:grid; gap:1rem; grid-template-columns:1fr 1fr 1fr 1fr; align-items:center; margin-top:1rem;">
+  <form method="get" action="recipes.php" id="filterForm" data-aos="fade-up" style="display:grid; gap:1rem; grid-template-columns:1fr 1fr 1fr 1fr; align-items:center; margin-top:1rem;">
     <!-- Search -->
     <input type="text" name="q" value="<?= htmlspecialchars($search) ?>" placeholder="Search recipes…" class="form-input">
 
@@ -103,6 +103,26 @@ $result = $stmt->get_result();
     <?php endif; ?>
   </div>
 </div>
+
+<script>
+// Auto-submit on select change
+document.querySelectorAll('#filterForm select').forEach(select => {
+  select.addEventListener('change', () => {
+    document.getElementById('filterForm').submit();
+  });
+});
+
+// Make Enter in search field submit immediately
+const searchInput = document.querySelector('#filterForm input[name="q"]');
+if (searchInput) {
+  searchInput.addEventListener('keypress', e => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      searchInput.form.submit();
+    }
+  });
+}
+</script>
 
 <?php
 $stmt->close();
