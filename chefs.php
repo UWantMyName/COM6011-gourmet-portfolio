@@ -1,101 +1,42 @@
 <?php
-// Enable full error reporting during development
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+// chefs.php
+include __DIR__ . '/inc/header.php';
+include __DIR__ . '/config.php';
 
-// Include DB config
-include 'config.php';
-
-// Run query to get chefs
-$sql = "SELECT * FROM chefs";
-$result = $conn->query($sql);
-
-// Handle query failure
-if (!$result) {
-    die("Query failed: " . $conn->error);
-}
+// Fetch all chefs
+$sql = "SELECT * FROM chefs ORDER BY experience_years DESC";
+$res = $conn->query($sql);
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Michelin Chefs</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f7f7f7;
-            padding: 20px;
-        }
+<div class="container" style="padding-top:6rem;" data-aos="fade-up">
+  <h1 data-aos="fade-right">Our Michelin Chefs</h1>
 
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-
-        .chefs-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .chef-card {
-            background: white;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            width: 300px;
-            padding: 20px;
-            box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
-        }
-
-        .chef-card h2 {
-            margin-top: 0;
-            color: #555;
-        }
-
-        .chef-role {
-            font-weight: bold;
-            color: #777;
-        }
-
-        .chef-specialty {
-            font-style: italic;
-            color: #999;
-        }
-
-        .chef-bio, .chef-guilt {
-            margin-top: 10px;
-            color: #333;
-        }
-
-        .chef-experience {
-            margin-top: 8px;
-            color: #444;
-        }
-    </style>
-</head>
-<body>
-
-<h1>Our Michelin Chefs</h1>
-
-<div class="chefs-container">
-<?php if ($result->num_rows > 0): ?>
-    <?php while($row = $result->fetch_assoc()): ?>
-        <div class="chef-card">
-            <h2><?php echo htmlspecialchars($row['name']); ?></h2>
-            <div class="chef-role"><?php echo htmlspecialchars($row['role']); ?></div>
-            <div class="chef-specialty"><?php echo htmlspecialchars($row['specialty']); ?></div>
-            <div class="chef-experience">Experience: <?php echo (int)$row['experience_years']; ?> years</div>
-            <div class="chef-bio"><?php echo nl2br(htmlspecialchars($row['biography'])); ?></div>
-            <div class="chef-guilt"><strong>Guilty Pleasure:</strong> <?php echo htmlspecialchars($row['guilty_pleasure']); ?></div>
-        </div>
-    <?php endwhile; ?>
-<?php else: ?>
-    <p>No chefs found.</p>
-<?php endif; ?>
+  <div class="grid-3" data-aos="fade-up" style="margin-top:2rem;">
+    <?php if ($res && $res->num_rows): ?>
+      <?php while($chef = $res->fetch_assoc()): ?>
+        <a href="chef.php?id=<?= $chef['id'] ?>" class="card">
+          <!-- Chef Photo (place at images/chefs/{id}.jpg) -->
+          <img src="images/chefs/<?= $chef['id'] ?>.jpg"
+               alt="<?= htmlspecialchars($chef['name']) ?>"
+               style="height:180px; object-fit:cover;">
+          <div style="padding:1rem;">
+            <h3><?= htmlspecialchars($chef['name']) ?></h3>
+            <p style="margin:0.3rem 0; color:#777;">
+              <strong><?= htmlspecialchars($chef['role']) ?></strong><br>
+              <em><?= htmlspecialchars($chef['specialty']) ?></em>
+            </p>
+            <p style="font-size:0.9rem; color:#555;">
+              <?= (int)$chef['experience_years'] ?> years’ experience
+            </p>
+          </div>
+        </a>
+      <?php endwhile; ?>
+    <?php else: ?>
+      <p>No chefs found.</p>
+    <?php endif; ?>
+  </div>
 </div>
 
-</body>
-</html>
+<?php
+include __DIR__ . '/inc/footer.php';
+?>

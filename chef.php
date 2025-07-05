@@ -1,103 +1,86 @@
 <?php
-// Enable error reporting for debugging
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+// chef.php
+include __DIR__ . '/inc/header.php';
+include __DIR__ . '/config.php';
 
-// Include DB config
-include 'config.php';
-
-// Get chef ID from URL
+// Get & validate ID
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
-    die("Invalid chef ID.");
+  die("Invalid chef ID.");
 }
-
 $chef_id = (int)$_GET['id'];
 
-// Fetch chef from DB
-$sql = "SELECT * FROM chefs WHERE id = ?";
-$stmt = $conn->prepare($sql);
+// Fetch chef
+$stmt = $conn->prepare("SELECT * FROM chefs WHERE id = ?");
 $stmt->bind_param("i", $chef_id);
 $stmt->execute();
-$result = $stmt->get_result();
-
-if ($result->num_rows === 0) {
-    die("Chef not found.");
+$cRes = $stmt->get_result();
+if ($cRes->num_rows === 0) {
+  die("Chef not found.");
 }
+$chef = $cRes->fetch_assoc();
 
-$chef = $result->fetch_assoc();
+// Fetch recipes by this chef
+$rStmt = $conn->prepare("
+  SELECT id, title, image_path 
+  FROM recipes 
+  WHERE chef_id = ? 
+  ORDER BY date_created DESC
+");
+$rStmt->bind_param("i", $chef_id);
+$rStmt->execute();
+$rRes = $rStmt->get_result();
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title><?php echo htmlspecialchars($chef['name']); ?> - Michelin Chef Profile</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f4f4;
-            margin: 0;
-            padding: 40px;
-        }
-
-        .profile-container {
-            max-width: 700px;
-            margin: auto;
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        h1 {
-            margin-top: 0;
-            color: #333;
-        }
-
-        .section-label {
-            font-weight: bold;
-            margin-top: 20px;
-            color: #555;
-        }
-
-        .text-block {
-            margin-top: 5px;
-            color: #444;
-        }
-
-        .back-link {
-            margin-top: 30px;
-            display: inline-block;
-            color: #0077cc;
-            text-decoration: none;
-        }
-
-        .back-link:hover {
-            text-decoration: underline;
-        }
-    </style>
-</head>
-<body>
-
-<div class="profile-container">
-    <h1><?php echo htmlspecialchars($chef['name']); ?></h1>
-    <div class="section-label">Role:</div>
-    <div class="text-block"><?php echo htmlspecialchars($chef['role']); ?></div>
-
-    <div class="section-label">Specialty:</div>
-    <div class="text-block"><?php echo htmlspecialchars($chef['specialty']); ?></div>
-
-    <div class="section-label">Experience:</div>
-    <div class="text-block"><?php echo (int)$chef['experience_years']; ?> years</div>
-
-    <div class="section-label">Biography:</div>
-    <div class="text-block"><?php echo nl2br(htmlspecialchars($chef['biography'])); ?></div>
-
-    <div class="section-label">Guilty Pleasure:</div>
-    <div class="text-block"><?php echo htmlspecialchars($chef['guilty_pleasure']); ?></div>
-
-    <a href="chefs.php" class="back-link">← Back to Chefs</a>
+<div class="hero-slider" style="height:40vh; margin-top:4rem;">
+  <div class="slides">
+    <!-- optional rotating background of chef at work -->
+    <div class="slide" style="background-image:url('images/chefs/<?= $chef_id ?>.jpg')"></div>
+    <!-- you can add more .slide divs here for multiple images -->
+  </div>
+  <div class="overlay"></div>
+  <div class="hero-content" data-aos="fade-up">
+    <h1><?= htmlspecialchars($chef['name']) ?></h1>
+    <p class="chef-role"><?= htmlspecialchars($chef['role']) ?> • <em><?= htmlspecialchars($chef['specialty']) ?></em></p>
+  </div>
 </div>
 
-</body>
-</html>
+<div class="container" data-aos="fade-up" style="padding:3rem 0;">
+  <!-- Bio & Stats -->
+  <div style="display:grid; grid-template-columns:1fr 2fr; gap:2rem; align-items:start;">
+    <!-- Chef Portrait -->
+    <div>
+      <img src="images/chefs/<?= $chef_id ?>.jpg"
+           alt="<?= htmlspecialchars($chef['name']) ?>"
+           style="width:100%; border-radius:8px; object-fit:cover;">
+    </div>
+    <!-- Details -->
+    <div>
+      <h2>About <?= htmlspecialchars($chef['name']) ?></h2>
+      <p><strong>Experience:</strong> <?= (int)$chef['experience_years'] ?> years</p>
+      <p><?= nl2br(htmlspecialchars($chef['biography'])) ?></p>
+      <p><strong>Guilty Pleasure:</strong> <?= htmlspecialchars($chef['guilty_pleasure']) ?></p>
+    </div>
+  </div>
+
+  <!-- Chef’s Recipes -->
+  <?php if ($rRes->num_rows): ?>
+    <section style="margin-top:4rem;">
+      <h2 data-aos="fade-right">Recipes by <?= htmlspecialchars($chef['name']) ?></h2>
+      <div class="grid-3" data-aos="fade-up" style="margin-top:1rem;">
+        <?php while($r = $rRes->fetch_assoc()): ?>
+          <a href="recipe.php?id=<?= $r['id'] ?>" class="card">
+            <img src="<?= htmlspecialchars($r['image_path']) ?>" alt="<?= htmlspecialchars($r['title']) ?>"
+                 style="height:160px; object-fit:cover;">
+            <h3><?= htmlspecialchars($r['title']) ?></h3>
+          </a>
+        <?php endwhile; ?>
+      </div>
+    </section>
+  <?php else: ?>
+    <p style="margin-top:2rem;">No recipes found for this chef.</p>
+  <?php endif; ?>
+</div>
+
+<?php
+include __DIR__ . '/inc/footer.php';
+?>
