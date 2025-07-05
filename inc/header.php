@@ -28,9 +28,9 @@
 <nav class="navbar">
   <div class="container">
     <!-- logo link also absolute -->
-    <a class="logo" href="/COM6011/index.html">Michelin<strong>folio</strong></a>
+    <a class="logo" href="/COM6011/index.php">Michelin<strong>folio</strong></a>
     <div class="nav-links">
-      <a href="/COM6011/index.html">Home</a>
+      <a href="/COM6011/index.php">Home</a>
       <a href="/COM6011/chefs.php">Chefs</a>
       <a href="/COM6011/recipes.php">Recipes</a>
     </div>
