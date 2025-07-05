@@ -1,13 +1,78 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <title>title</title>
+  <meta charset="UTF-8">
+  <title>Michelinfolio • Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-    
-    <script>
-        alert("Hi!");
-    </script>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container">
+      <a class="logo" href="index.html">Michelin<strong>folio</strong></a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="chefs.php">Chefs</a>
+        <a href="recipes.php">Recipes</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Slider Hero Section -->
+    <header class="hero-slider">
+    <div class="slides">
+        <div class="slide" style="background-image:url('images/1.jpg')"></div>
+        <div class="slide" style="background-image:url('images/2.jpg')"></div>
+        <div class="slide" style="background-image:url('images/3.jpg')"></div>
+        <div class="slide" style="background-image:url('images/4.jpg')"></div>
+        <div class="slide" style="background-image:url('images/5.jpg')"></div>
+        <div class="slide" style="background-image:url('images/6.jpg')"></div>
+        <div class="slide" style="background-image:url('images/7.jpg')"></div>
+    </div>
+    <div class="overlay"></div>
+    <div class="hero-content" data-aos="fade-up">
+        <h1>Welcome to Michelinfolio</h1>
+        <p>Discover the art and passion behind every Michelin-star worthy dish.</p>
+        <a href="recipes.php" class="btn">Explore Recipes</a>
+    </div>
+    </header>
+
+  <!-- Featured Chefs (example) -->
+  <section class="section" id="featured-chefs">
+    <div class="container">
+      <h2 data-aos="fade-right">Our Master Chefs</h2>
+      <div class="grid-3" data-aos="fade-up">
+        <a class="card" href="chef.php?id=5">
+          <img src="images/1.jpg" alt="Chef Takeshi">
+          <h3>Takeshi Morimoto</h3>
+          <p>Head Chef • Cold Station</p>
+        </a>
+        <a class="card" href="chef.php?id=1">
+          <img src="images/2.jpg" alt="Jean Lefevre">
+          <h3>Jean Lefevre</h3>
+          <p>Executive Chef • Sauce Master</p>
+        </a>
+        <a class="card" href="chef.php?id=4">
+          <img src="images/3.jpg" alt="Isabelle Dupont">
+          <h3>Isabelle Dupont</h3>
+          <p>Pastry Chef • Dessert Artist</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Michelinfolio. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 </body>
 </html>
