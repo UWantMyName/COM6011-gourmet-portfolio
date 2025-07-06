@@ -13,13 +13,13 @@
 
 <nav class="navbar">
   <div class="container">
-    <a class="logo animate-on-scroll" href="dashboard.php">
+    <a class="logo animate-on-scroll" href="../index.php">
       Michelin<strong>folio</strong>
     </a>
     <div class="nav-links">
-      <a class="animate-on-scroll" href="dashboard.php">Home</a>
-      <a class="animate-on-scroll" href="chefs.php">Chefs</a>
-      <a class="animate-on-scroll" href="recipes.php">Recipes</a>
+      <a class="animate-on-scroll" href="dashboard.php">Admin Dashboard</a>
+      <a class="animate-on-scroll" href="chefs.php">Manage Chefs</a>
+      <a class="animate-on-scroll" href="recipes.php">Manage Recipes</a>
     </div>
   </div>
 </nav>
