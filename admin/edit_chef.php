@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Redirect back to chefs list
-    echo "<script>window.location.href = 'chefs.php';</script>";
+    echo "<script>history.back();</script>";
     exit;
 }
 
@@ -147,7 +147,7 @@ $stmt->close();
 
     <!-- Submit / Cancel -->
     <button type="submit" class="admin-btn animate-on-scroll">Save Changes</button>
-    <a href="chefs.php" class="admin-btn animate-on-scroll">Cancel</a>
+    <a href="chefs.php" class="admin-btn animate-on-scroll">Go Back</a>
   </form>
 </div>
 

@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $title, $chef_id, $cuisine, $date, $ing, $desc, $imgPath, $prep, $cook
     );
     if ($stmt->execute()) {
-        echo "<script>window.location.href = 'recipes.php';</script>";
+        echo "<script>history.back();</script>";
         exit;
     } else {
         echo "<p style='color:red;'>Error: " . htmlspecialchars($stmt->error) . "</p>";
