@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Redirect back to chefs list
-    echo "<script>history.back();</script>";
+    echo "<script>window.location.href = 'chefs.php';</script>";
     exit;
 }
 

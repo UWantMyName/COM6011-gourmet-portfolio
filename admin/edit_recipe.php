@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     ");
     $stmt->bind_param("sisssssiii", $title, $chef_id, $cuisine, $date, $ing, $desc, $imgPath, $prep, $cook, $rid);
     if ($stmt->execute()) {
-        echo "<script>history.back();</script>";
+        echo "<script>window.location.href = 'recipes.php';</script>";
         exit;
     }
 }
