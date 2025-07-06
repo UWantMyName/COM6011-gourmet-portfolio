@@ -94,7 +94,7 @@ $result = $stmt->get_result();
     <?php if ($result && $result->num_rows): ?>
       <?php while($row = $result->fetch_assoc()): ?>
         <a href="recipe.php?id=<?= $row['id'] ?>" class="card animate-on-scroll">
-          <img src="COM6011/images/recipes/<?= htmlspecialchars($row['image_path']) ?>"
+          <img src="images/recipes/<?= htmlspecialchars($row['image_path']) ?>"
                alt="<?= htmlspecialchars($row['title']) ?>">
           <h3><?= htmlspecialchars($row['title']) ?></h3>
           <p><em><?= htmlspecialchars($row['cuisine']) ?></em></p>

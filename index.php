@@ -100,7 +100,7 @@ $recentRecipes = $conn->query($recipesSql);
         <?php if ($recentRecipes && $recentRecipes->num_rows): ?>
           <?php while($recipe = $recentRecipes->fetch_assoc()): ?>
             <a class="card" href="recipe.php?id=<?= $recipe['id'] ?>">
-              <img src="<?= htmlspecialchars($recipe['image_path']) ?>" alt="<?= htmlspecialchars($recipe['title']) ?>">
+              <img src="images/recipes/<?= htmlspecialchars($recipe['image_path']) ?>" alt="<?= htmlspecialchars($recipe['title']) ?>">
               <h3><?= htmlspecialchars($recipe['title']) ?></h3>
               <p><?= htmlspecialchars($recipe['description']) ?></p>
             </a>

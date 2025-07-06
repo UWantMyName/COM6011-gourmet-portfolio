@@ -71,7 +71,7 @@ $rRes = $rStmt->get_result();
         <?php while($r = $rRes->fetch_assoc()): ?>
           <a href="recipe.php?id=<?= $r['id'] ?>" class="card animate-on-scroll">
             <img
-              src="<?= htmlspecialchars($r['image_path']) ?>"
+              src="images/recipes/<?= htmlspecialchars($r['image_path']) ?>"
               alt="<?= htmlspecialchars($r['title']) ?>"
               style="height:160px; object-fit:cover;"
             >
