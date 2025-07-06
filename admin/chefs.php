@@ -7,7 +7,7 @@ $res = $conn->query("SELECT * FROM chefs ORDER BY id");
 
 <div class="container animate-on-scroll" style="padding-top:6rem;">
   <h1 class="animate-on-scroll">Chefs</h1>
-  <a href="add_chef.php" class="btn btn-sm animate-on-scroll">+ Add New Chef</a>
+  <a href="add_chef.php" class="admin-btn animate-on-scroll">+ Add New Chef</a>
 
   <table class="admin-table animate-on-scroll">
     <thead>

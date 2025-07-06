@@ -146,8 +146,8 @@ $stmt->close();
     </label><br><br>
 
     <!-- Submit / Cancel -->
-    <button type="submit" class="btn animate-on-scroll">Save Changes</button>
-    <a href="chefs.php" class="btn btn-sm animate-on-scroll">Cancel</a>
+    <button type="submit" class="admin-btn animate-on-scroll">Save Changes</button>
+    <a href="chefs.php" class="admin-btn animate-on-scroll">Cancel</a>
   </form>
 </div>
 

@@ -105,8 +105,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <small>(Will be saved as <code>images/chefs/&lt;chef_id&gt;.&lt;ext&gt;</code>)</small>
     </label><br><br>
 
-    <button type="submit" class="btn animate-on-scroll">Save Chef</button>
-    <a href="chefs.php" class="btn btn-sm animate-on-scroll">Cancel</a>
+    <button type="submit" class="admin-btn animate-on-scroll">Save Chef</button>
+    <a href="chefs.php" class="admin-btn animate-on-scroll">Cancel</a>
   </form>
 </div>
 

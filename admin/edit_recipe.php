@@ -119,8 +119,8 @@ $recipe = $rRes->fetch_assoc();
       <input type="file" name="image" accept="image/*" class="form-input">
     </label><br><br>
 
-    <button type="submit" class="btn animate-on-scroll">Save Changes</button>
-    <a href="recipes.php" class="btn btn-sm animate-on-scroll">Cancel</a>
+    <button type="submit" class="admin-btn animate-on-scroll">Save Changes</button>
+    <a href="recipes.php" class="admin-btn animate-on-scroll">Cancel</a>
   </form>
 </div>
 

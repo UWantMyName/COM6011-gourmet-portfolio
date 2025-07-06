@@ -15,7 +15,7 @@ $res = $conn->query($sql);
 
 <div class="container animate-on-scroll" style="padding-top:6rem;">
   <h1 class="animate-on-scroll">Recipes</h1>
-  <a href="add_recipe.php" class="btn animate-on-scroll">+ Add New Recipe</a>
+  <a href="add_recipe.php" class="admin-btn animate-on-scroll">+ Add New Recipe</a>
 
   <table class="admin-table animate-on-scroll">
     <thead>

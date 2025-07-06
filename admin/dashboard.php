@@ -7,8 +7,8 @@ include __DIR__ . '/../inc/header_admin.php';
   <h1>Admin Dashboard</h1>
 
   <div class="admin-buttons">
-    <a href="chefs.php" class="btn">Manage Chefs</a>
-    <a href="recipes.php" class="btn">Manage Recipes</a>
+    <a href="chefs.php" class="admin-btn">Manage Chefs</a>
+    <a href="recipes.php" class="admin-btn">Manage Recipes</a>
   </div>
 </div>
 
