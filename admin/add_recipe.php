@@ -17,14 +17,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $prep     = (int)$_POST['prep_time_minutes'];
     $cook     = (int)$_POST['cook_time_minutes'];
 
-    // Handle image upload
-    $imgPath = '';
+    $imgPath = null;
     if (!empty($_FILES['image']['name'])) {
-        $targetDir = __DIR__ . '/../images/';
-        $fname     = basename($_FILES['image']['name']);
-        $target    = $targetDir . uniqid() . '-' . $fname;
-        if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
-            $imgPath = 'images/' . basename($target);
+        $targetDir = __DIR__ . '/../images/recipes/';
+        $ext = strtolower(pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION));
+        $newName = uniqid('img_') . '.' . $ext;
+        $targetFile = $targetDir . $newName;
+
+        if (move_uploaded_file($_FILES['image']['tmp_name'], $targetFile)) {
+            $imgPath = $newName; // ✅ Only the filename is saved
         }
     }
 

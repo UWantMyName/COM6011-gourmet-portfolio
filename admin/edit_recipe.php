@@ -23,8 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $prep    = (int)$_POST['prep_time_minutes'];
     $cook    = (int)$_POST['cook_time_minutes'];
 
-    // Possibly update image
-    $imgPath = $_POST['existing_image']; // default to old image
+    $imgPath = basename($_POST['existing_image']); // keep only filename
     if (!empty($_FILES['image']['name'])) {
         $targetDir = __DIR__ . '/../images/recipes/';
         $ext = strtolower(pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION));
@@ -32,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $targetFile = $targetDir . $newName;
 
         if (move_uploaded_file($_FILES['image']['tmp_name'], $targetFile)) {
-            $imgPath = $newName; // only filename saved to DB
+            $imgPath = $newName; // ✅ only the filename gets saved
         }
     }
 
