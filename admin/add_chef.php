@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // 5) Redirect back to chef list
-    header("Location: chefs.php");
+    echo "<script>window.location.href = 'chefs.php';</script>";
     exit;
 }
 ?>

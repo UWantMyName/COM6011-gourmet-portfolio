@@ -1,6 +1,3 @@
-<?php
-// inc/footer.php
-?>
   <footer class="footer animate-on-scroll">
     <div class="container">
       <p class="animate-on-scroll">&copy; 2025 Michelinfolio. All rights reserved.</p>

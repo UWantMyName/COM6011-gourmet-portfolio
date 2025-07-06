@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
 // admin/add_recipe.php
 include __DIR__ . '/../inc/header_admin.php';
 include __DIR__ . '/../config.php';
@@ -40,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $title, $chef_id, $cuisine, $date, $ing, $desc, $imgPath, $prep, $cook
     );
     if ($stmt->execute()) {
-        header("Location: recipes.php");
+        echo "<script>window.location.href = 'recipes.php';</script>";
         exit;
     } else {
         echo "<p style='color:red;'>Error: " . htmlspecialchars($stmt->error) . "</p>";

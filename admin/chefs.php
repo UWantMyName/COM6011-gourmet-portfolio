@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
 include __DIR__ . '/../inc/header_admin.php';
 include __DIR__ . '/../config.php';
 
