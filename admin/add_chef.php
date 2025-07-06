@@ -1,6 +1,6 @@
 <?php
 // admin/add_chef.php
-include __DIR__ . '/../inc/header.php';
+include __DIR__ . '/../inc/header_admin.php';
 include __DIR__ . '/../config.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

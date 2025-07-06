@@ -1,6 +1,6 @@
 <?php
 // admin/edit_chef.php
-include __DIR__ . '/../inc/header.php';
+include __DIR__ . '/../inc/header_admin.php';
 include __DIR__ . '/../config.php';
 
 // 1) Validate & fetch the chef ID

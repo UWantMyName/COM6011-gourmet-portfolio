@@ -1,5 +1,5 @@
 <?php
-include __DIR__ . '/../inc/header.php';
+include __DIR__ . '/../inc/header_admin.php';
 include __DIR__ . '/../config.php';
 
 $res = $conn->query("SELECT * FROM chefs ORDER BY id");

@@ -1,6 +1,6 @@
 <?php
 // admin/recipes.php
-include __DIR__ . '/../inc/header.php';
+include __DIR__ . '/../inc/header_admin.php';
 include __DIR__ . '/../config.php';
 
 // Fetch all recipes with chef name

@@ -1,6 +1,6 @@
 <?php
 // admin/dashboard.php
-include __DIR__ . '/../inc/header.php';
+include __DIR__ . '/../inc/header_admin.php';
 ?>
 
 <div class="container" style="padding-top:6rem;">
