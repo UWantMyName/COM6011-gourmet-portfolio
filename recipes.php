@@ -53,16 +53,19 @@ $stmt->execute();
 $result = $stmt->get_result();
 ?>
 
-<div class="container" style="padding-top:6rem;" data-aos="fade-up">
-  <h1 data-aos="fade-right">Our Signature Recipes</h1>
+<div class="container animate-on-scroll" style="padding-top:6rem;">
+  <h1 class="animate-on-scroll">Our Signature Recipes</h1>
 
   <!-- ─── Search, Filter & Sort Controls ─── -->
-  <form method="get" action="recipes.php" id="filterForm" data-aos="fade-up" style="display:grid; gap:1rem; grid-template-columns:1fr 1fr 1fr 1fr; align-items:center; margin-top:1rem;">
+  <form method="get" action="recipes.php" id="filterForm"
+        class="animate-on-scroll"
+        style="display:grid; gap:1rem; grid-template-columns:1fr 1fr 1fr 1fr; align-items:center; margin-top:1rem;">
     <!-- Search -->
-    <input type="text" name="q" value="<?= htmlspecialchars($search) ?>" placeholder="Search recipes…" class="form-input">
+    <input type="text" name="q" value="<?= htmlspecialchars($search) ?>"
+           placeholder="Search recipes…" class="form-input animate-on-scroll">
 
     <!-- Cuisine Filter -->
-    <select name="cuisine" class="form-input">
+    <select name="cuisine" class="form-input animate-on-scroll">
       <option value="">— All Cuisines —</option>
       <?php while($c = $cuiRes->fetch_assoc()): ?>
         <?php $sel = $c['cuisine'] === $filter ? 'selected' : ''; ?>
@@ -73,25 +76,26 @@ $result = $stmt->get_result();
     </select>
 
     <!-- Sort Field -->
-    <select name="sort" class="form-input">
+    <select name="sort" class="form-input animate-on-scroll">
       <option value="date_created"      <?= $sort==='date_created'       ? 'selected' : '' ?>>Date Created</option>
       <option value="prep_time_minutes" <?= $sort==='prep_time_minutes'  ? 'selected' : '' ?>>Prep Time</option>
       <option value="cook_time_minutes" <?= $sort==='cook_time_minutes'  ? 'selected' : '' ?>>Cook Time</option>
     </select>
 
     <!-- Order Direction -->
-    <select name="order" class="form-input">
+    <select name="order" class="form-input animate-on-scroll">
       <option value="ASC"  <?= $order==='ASC'  ? 'selected' : '' ?>>Ascending</option>
       <option value="DESC" <?= $order==='DESC' ? 'selected' : '' ?>>Descending</option>
     </select>
   </form>
 
   <!-- ─── Recipe Grid ─── -->
-  <div class="grid-3" style="margin-top:2rem;" data-aos="fade-up">
+  <div class="grid-3 animate-on-scroll" style="margin-top:2rem;">
     <?php if ($result && $result->num_rows): ?>
       <?php while($row = $result->fetch_assoc()): ?>
-        <a href="recipe.php?id=<?= $row['id'] ?>" class="card">
-          <img src="<?= htmlspecialchars($row['image_path']) ?>" alt="<?= htmlspecialchars($row['title']) ?>">
+        <a href="recipe.php?id=<?= $row['id'] ?>" class="card animate-on-scroll">
+          <img src="COM6011/images/recipes/<?= htmlspecialchars($row['image_path']) ?>"
+               alt="<?= htmlspecialchars($row['title']) ?>">
           <h3><?= htmlspecialchars($row['title']) ?></h3>
           <p><em><?= htmlspecialchars($row['cuisine']) ?></em></p>
           <p>By <?= htmlspecialchars($row['chef_name']) ?></p>
@@ -99,7 +103,7 @@ $result = $stmt->get_result();
         </a>
       <?php endwhile; ?>
     <?php else: ?>
-      <p>No recipes found.</p>
+      <p class="animate-on-scroll">No recipes found.</p>
     <?php endif; ?>
   </div>
 </div>

@@ -1,16 +1,28 @@
 <?php
 // inc/footer.php
 ?>
-  <footer class="footer">
+  <footer class="footer animate-on-scroll">
     <div class="container">
-      <p>&copy; 2025 Michelinfolio. All rights reserved.</p>
+      <p class="animate-on-scroll">&copy; 2025 Michelinfolio. All rights reserved.</p>
     </div>
   </footer>
 
-  <!-- AOS & any other scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <!-- Handcrafted scroll animations -->
   <script>
-    AOS.init({ duration: 800, once: true });
+  document.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.animate-on-scroll').forEach(el => {
+      observer.observe(el);
+    });
+  });
   </script>
 </body>
 </html>

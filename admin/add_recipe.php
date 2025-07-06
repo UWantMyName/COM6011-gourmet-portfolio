@@ -42,19 +42,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header("Location: recipes.php");
         exit;
     } else {
-        echo "<p style='color:red;'>Error: " . $stmt->error . "</p>";
+        echo "<p style='color:red;'>Error: " . htmlspecialchars($stmt->error) . "</p>";
     }
 }
 ?>
 
-<div class="container" style="padding-top:6rem;" data-aos="fade-up">
-  <h1>Add New Recipe</h1>
-  <form method="post" enctype="multipart/form-data" style="max-width:600px; margin-top:2rem;">
-    <label>Title:<br>
+<div class="container animate-on-scroll" style="padding-top:6rem;">
+  <h1 class="animate-on-scroll">Add New Recipe</h1>
+
+  <form method="post" enctype="multipart/form-data"
+        class="animate-on-scroll"
+        style="max-width:600px; margin-top:2rem;">
+    <label class="animate-on-scroll">Title:<br>
       <input name="title" required class="form-input">
     </label><br><br>
 
-    <label>Chef:<br>
+    <label class="animate-on-scroll">Chef:<br>
       <select name="chef_id" required class="form-input">
         <option value="">-- Select Chef --</option>
         <?php while($c = $chefs->fetch_assoc()): ?>
@@ -63,36 +66,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       </select>
     </label><br><br>
 
-    <label>Cuisine:<br>
+    <label class="animate-on-scroll">Cuisine:<br>
       <input name="cuisine" required class="form-input">
     </label><br><br>
 
-    <label>Date Created:<br>
+    <label class="animate-on-scroll">Date Created:<br>
       <input type="date" name="date_created" required class="form-input">
     </label><br><br>
 
-    <label>Ingredients:<br>
+    <label class="animate-on-scroll">Ingredients:<br>
       <textarea name="ingredients" rows="3" required class="form-input"></textarea>
     </label><br><br>
 
-    <label>Description:<br>
+    <label class="animate-on-scroll">Description:<br>
       <textarea name="description" rows="4" required class="form-input"></textarea>
     </label><br><br>
 
-    <label>Prep Time (mins):<br>
+    <label class="animate-on-scroll">Prep Time (mins):<br>
       <input type="number" name="prep_time_minutes" min="0" required class="form-input">
     </label><br><br>
 
-    <label>Cook Time (mins):<br>
+    <label class="animate-on-scroll">Cook Time (mins):<br>
       <input type="number" name="cook_time_minutes" min="0" required class="form-input">
     </label><br><br>
 
-    <label>Image:<br>
+    <label class="animate-on-scroll">Image:<br>
       <input type="file" name="image" accept="image/*" class="form-input">
     </label><br><br>
 
-    <button type="submit" class="btn">Save Recipe</button>
-    <a href="recipes.php" class="btn btn-sm">Cancel</a>
+    <button type="submit" class="btn animate-on-scroll">Save Recipe</button>
+    <a href="recipes.php" class="btn btn-sm animate-on-scroll">Cancel</a>
   </form>
 </div>
 

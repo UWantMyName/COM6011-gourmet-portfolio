@@ -13,11 +13,11 @@ $sql = "
 $res = $conn->query($sql);
 ?>
 
-<div class="container" style="padding-top:6rem;" data-aos="fade-up">
-  <h1>Recipes</h1>
-  <a href="add_recipe.php" class="btn">+ Add New Recipe</a>
+<div class="container animate-on-scroll" style="padding-top:6rem;">
+  <h1 class="animate-on-scroll">Recipes</h1>
+  <a href="add_recipe.php" class="btn animate-on-scroll">+ Add New Recipe</a>
 
-  <table class="admin-table">
+  <table class="admin-table animate-on-scroll">
     <thead>
       <tr>
         <th>ID</th>
@@ -30,16 +30,16 @@ $res = $conn->query($sql);
     </thead>
     <tbody>
       <?php while($r = $res->fetch_assoc()): ?>
-      <tr>
+      <tr class="animate-on-scroll">
         <td><?= $r['id'] ?></td>
         <td><?= htmlspecialchars($r['title']) ?></td>
         <td><?= htmlspecialchars($r['chef_name']) ?></td>
         <td><?= htmlspecialchars($r['cuisine']) ?></td>
         <td><?= htmlspecialchars($r['date_created']) ?></td>
         <td>
-          <a href="edit_recipe.php?id=<?= $r['id'] ?>" class="btn btn-sm">Edit</a>
+          <a href="edit_recipe.php?id=<?= $r['id'] ?>" class="btn btn-sm animate-on-scroll">Edit</a>
           <a href="delete_recipe.php?id=<?= $r['id'] ?>"
-             class="btn btn-sm"
+             class="btn btn-sm animate-on-scroll"
              onclick="return confirm('Delete <?= htmlspecialchars($r['title']) ?>?')">
              Delete
           </a>

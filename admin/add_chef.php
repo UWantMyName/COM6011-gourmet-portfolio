@@ -61,13 +61,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-<div class="container" style="padding-top:6rem;" data-aos="fade-up">
-  <h1>Add New Chef</h1>
+<div class="container animate-on-scroll" style="padding-top:6rem;">
+  <h1 class="animate-on-scroll">Add New Chef</h1>
 
-  <form method="post" enctype="multipart/form-data" style="max-width:600px; margin-top:2rem;">
-    <!-- Name, Role, Specialty, etc. (same as before) -->
-    <label>Name:<br><input type="text" name="name" required class="form-input"></label><br><br>
-    <label>Role:<br>
+  <form method="post" enctype="multipart/form-data"
+        class="animate-on-scroll"
+        style="max-width:600px; margin-top:2rem;">
+    <!-- Name, Role, Specialty, etc. -->
+    <label class="animate-on-scroll">Name:<br>
+      <input type="text" name="name" required class="form-input">
+    </label><br><br>
+
+    <label class="animate-on-scroll">Role:<br>
       <select name="role" required class="form-input">
         <option>Executive Chef</option>
         <option>Head Chef</option>
@@ -77,19 +82,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <option>Kitchen Porter</option>
       </select>
     </label><br><br>
-    <label>Specialty:<br><input type="text" name="specialty" maxlength="400" required class="form-input"></label><br><br>
-    <label>Experience (years):<br><input type="number" name="experience_years" min="0" required class="form-input"></label><br><br>
-    <label>Biography:<br><textarea name="biography" rows="4" class="form-input"></textarea></label><br><br>
-    <label>Guilty Pleasure:<br><textarea name="guilty_pleasure" rows="2" class="form-input"></textarea></label><br><br>
+
+    <label class="animate-on-scroll">Specialty:<br>
+      <input type="text" name="specialty" maxlength="400" required class="form-input">
+    </label><br><br>
+
+    <label class="animate-on-scroll">Experience (years):<br>
+      <input type="number" name="experience_years" min="0" required class="form-input">
+    </label><br><br>
+
+    <label class="animate-on-scroll">Biography:<br>
+      <textarea name="biography" rows="4" class="form-input"></textarea>
+    </label><br><br>
+
+    <label class="animate-on-scroll">Guilty Pleasure:<br>
+      <textarea name="guilty_pleasure" rows="2" class="form-input"></textarea>
+    </label><br><br>
 
     <!-- Chef Photo -->
-    <label>Chef Photo:<br>
+    <label class="animate-on-scroll">Chef Photo:<br>
       <input type="file" name="image" accept="image/*" class="form-input">
       <small>(Will be saved as <code>images/chefs/&lt;chef_id&gt;.&lt;ext&gt;</code>)</small>
     </label><br><br>
 
-    <button type="submit" class="btn">Save Chef</button>
-    <a href="chefs.php" class="btn btn-sm">Cancel</a>
+    <button type="submit" class="btn animate-on-scroll">Save Chef</button>
+    <a href="chefs.php" class="btn btn-sm animate-on-scroll">Cancel</a>
   </form>
 </div>
 

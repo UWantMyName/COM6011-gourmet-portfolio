@@ -83,19 +83,21 @@ $chef = $res->fetch_assoc();
 $stmt->close();
 ?>
 
-<div class="container" style="padding-top:6rem;" data-aos="fade-up">
-  <h1>Edit Chef: <?= htmlspecialchars($chef['name']) ?></h1>
+<div class="container animate-on-scroll" style="padding-top:6rem;">
+  <h1 class="animate-on-scroll">Edit Chef: <?= htmlspecialchars($chef['name']) ?></h1>
 
-  <form method="post" enctype="multipart/form-data" style="max-width:600px; margin-top:2rem;">
+  <form method="post" enctype="multipart/form-data"
+        class="animate-on-scroll"
+        style="max-width:600px; margin-top:2rem;">
     <!-- Name -->
-    <label>Name:<br>
+    <label class="animate-on-scroll">Name:<br>
       <input type="text" name="name"
              value="<?= htmlspecialchars($chef['name']) ?>"
              required class="form-input">
     </label><br><br>
 
     <!-- Role -->
-    <label>Role:<br>
+    <label class="animate-on-scroll">Role:<br>
       <select name="role" required class="form-input">
         <?php
         $roles = ['Executive Chef','Head Chef','Sous Chef','Chef de Partie','Commis Chef','Kitchen Porter'];
@@ -108,43 +110,44 @@ $stmt->close();
     </label><br><br>
 
     <!-- Specialty -->
-    <label>Specialty:<br>
+    <label class="animate-on-scroll">Specialty:<br>
       <input type="text" name="specialty" maxlength="400"
              value="<?= htmlspecialchars($chef['specialty']) ?>"
              required class="form-input">
     </label><br><br>
 
     <!-- Experience -->
-    <label>Experience (years):<br>
+    <label class="animate-on-scroll">Experience (years):<br>
       <input type="number" name="experience_years" min="0"
              value="<?= (int)$chef['experience_years'] ?>"
              required class="form-input">
     </label><br><br>
 
     <!-- Biography -->
-    <label>Biography:<br>
+    <label class="animate-on-scroll">Biography:<br>
       <textarea name="biography" rows="4" class="form-input"><?= htmlspecialchars($chef['biography']) ?></textarea>
     </label><br><br>
 
     <!-- Guilty Pleasure -->
-    <label>Guilty Pleasure:<br>
+    <label class="animate-on-scroll">Guilty Pleasure:<br>
       <textarea name="guilty_pleasure" rows="2" class="form-input"><?= htmlspecialchars($chef['guilty_pleasure']) ?></textarea>
     </label><br><br>
 
     <!-- Current & New Photo -->
-    <label>Chef Photo:<br>
+    <label class="animate-on-scroll">Chef Photo:<br>
       <?php if (!empty($chef['image_path'])): ?>
         <img src="../<?= htmlspecialchars($chef['image_path']) ?>"
+             class="animate-on-scroll"
              style="max-width:120px; display:block; margin-bottom:0.5rem;"
              alt="Current Chef Photo">
       <?php endif; ?>
       <input type="file" name="image" accept="image/*" class="form-input">
-      <small>New upload will overwrite and be saved as <code><?= $chef_id ?>.<em>ext</em></code></small>
+      <small>(New upload will overwrite and be saved as <code><?= $chef_id ?>.&lt;ext&gt;</code>)</small>
     </label><br><br>
 
     <!-- Submit / Cancel -->
-    <button type="submit" class="btn">Save Changes</button>
-    <a href="chefs.php" class="btn btn-sm">Cancel</a>
+    <button type="submit" class="btn animate-on-scroll">Save Changes</button>
+    <a href="chefs.php" class="btn btn-sm animate-on-scroll">Cancel</a>
   </form>
 </div>
 
