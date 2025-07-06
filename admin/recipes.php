@@ -8,7 +8,7 @@ $sql = "
   SELECT r.id, r.title, c.name AS chef_name, r.cuisine, r.date_created
   FROM recipes r
   JOIN chefs c ON r.chef_id = c.id
-  ORDER BY r.date_created DESC
+  ORDER BY r.id DESC
 ";
 $res = $conn->query($sql);
 ?>

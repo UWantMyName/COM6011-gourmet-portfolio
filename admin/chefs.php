@@ -5,7 +5,7 @@ error_reporting(E_ALL);
 include __DIR__ . '/../inc/header_admin.php';
 include __DIR__ . '/../config.php';
 
-$res = $conn->query("SELECT * FROM chefs ORDER BY id");
+$res = $conn->query("SELECT * FROM chefs ORDER BY id DESC");
 ?>
 
 <div class="container animate-on-scroll" style="padding-top:6rem;">
