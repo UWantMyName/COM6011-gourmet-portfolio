@@ -85,7 +85,7 @@ $rRes = $rStmt->get_result();
   <?php endif; ?>
 
   <p style="margin-top:3rem;">
-    <a href="chefs.php" style="color:#0077cc;">← Back to All Chefs</a>
+    <a href="javascript:history.back()" class="btn back-btn">← Back</a>
   </p>
 </div>
 

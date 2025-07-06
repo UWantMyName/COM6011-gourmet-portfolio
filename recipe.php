@@ -56,7 +56,7 @@ $recipe = $result->fetch_assoc();
         <p><?= nl2br(htmlspecialchars($recipe['description'])) ?></p>
     </div>
 
-    <a href="recipes.php" class="btn back-btn">← Back to Recipes</a>
+    <a href="javascript:history.back()" class="btn back-btn">← Back</a>
 </div>
 
 <?php include 'inc/footer.php'; ?>
